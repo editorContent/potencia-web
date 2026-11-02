@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Potencia tu Comunicación | Mara Benítez</title>
+<meta name="description" content="Mejoramos la comunicación interna de equipos. Capacitaciones, charlas, talleres, mentorías y programas online.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terracota: #9B7B6B;
+    --arena: #D9C8B8;
+    --crema: #F4EEE8;
+    --chocolate: #5A4032;
+    --taupe: #A89282;
+    --gris: #7A726C;
+    --texto: #2B2623;
+    --fondo-oscuro: #5E4D44;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', Arial, sans-serif; font-size: 19px; line-height: 1.7; color: var(--texto); background: #fff; }
+  img { max-width: 100%; display: block; }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+  h1, h2, h3 { line-height: 1.25; }
+  h1, h2 { font-family: 'Playfair Display', Georgia, serif; }
+  h2 { font-size: 2.2rem; font-weight: 500; margin-bottom: 6px; }
+  h3 { font-size: 1.25rem; font-weight: 600; margin-bottom: 6px; }
+  .sub { font-size: 1rem; margin-bottom: 28px; }
+
+  /* Secciones claras y oscuras (como en el diseño de Canva) */
+  section { padding: 70px 0; position: relative; }
+
+  /* Logo chico arriba a la derecha de cada sección: crema sobre fondo oscuro, marrón sobre fondo claro */
+  .oscuro:not(#numeros)::before, .claro::before, .crema::before {
+    content: ""; position: absolute; top: 22px; width: 150px; height: 42px;
+    right: max(24px, calc((100% - 1100px) / 2 + 24px));
+    background: no-repeat right center / contain;
+  }
+  .oscuro:not(#numeros)::before { background-image: url('images/logo-claro.png'); }
+  .claro::before, .crema::before { background-image: url('images/logo-marron.png'); }
+  .oscuro { background: var(--fondo-oscuro); color: var(--crema); }
+  .oscuro h2, .oscuro h3 { color: #fff; }
+  .claro { background: #fff; color: var(--texto); }
+  .claro h2, .claro h3 { color: var(--chocolate); }
+  .crema { background: var(--crema); color: var(--texto); }
+  .crema h2, .crema h3 { color: var(--chocolate); }
+
+  /* Imágenes: si todavía no subiste la foto, se ve un bloque de color */
+  .foto { background: var(--taupe); overflow: hidden; }
+  .foto img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Botones */
+  .btn { display: inline-block; text-decoration: none; font-weight: 600; font-size: 1.05rem; padding: 14px 30px; border-radius: 40px; border: 2px solid currentColor; }
+  .oscuro .btn, .hero .btn { color: #fff; }
+  .oscuro .btn:hover, .hero .btn:hover { background: #fff; color: var(--chocolate); }
+  .claro .btn.borde, .crema .btn.borde { color: var(--chocolate); }
+  .claro .btn.borde:hover, .crema .btn.borde:hover { background: var(--chocolate); color: #fff; }
+  .btn.lleno { background: var(--chocolate); color: #fff; border-color: var(--chocolate); }
+  .btn.lleno:hover { background: var(--terracota); border-color: var(--terracota); color: #fff; }
+
+  /* Menú */
+  header { background: var(--chocolate); position: sticky; top: 0; z-index: 10; }
+  nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 22px; padding: 12px 24px; max-width: 1100px; margin: 0 auto; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--crema); text-decoration: none; font-weight: 600; letter-spacing: 2px; font-size: 1rem; }
+  .brand img { height: 46px; width: auto; }
+  nav ul { display: flex; flex-wrap: wrap; gap: 4px 22px; list-style: none; }
+  nav a.link { color: var(--crema); text-decoration: none; font-weight: 500; font-size: 1rem; }
+  nav a.link:hover { color: var(--arena); }
+
+  /* Hero */
+  .hero { position: relative; min-height: 560px; display: flex; align-items: center; color: #fff;
+          background: var(--chocolate) center/cover no-repeat; background-image: url('images/hero.jpg'); padding: 60px 0; }
+  .hero::before { content: ""; position: absolute; inset: 0; background: rgba(40,30,25,.45); }
+  .hero .wrap { position: relative; }
+  .hero-caja { background: rgba(90,64,50,.85); padding: 36px 36px 40px; max-width: 520px; }
+  .hero h1 { font-size: 3rem; font-weight: 500; color: #fff; }
+  .hero p { font-size: 1.3rem; margin: 6px 0 26px; }
+
+  /* Qué hacemos */
+  .dos-col { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+  .dos-col .foto { aspect-ratio: 4/3.2; border-radius: 4px; }
+  .que-hacemos h2 { font-size: 2.8rem; }
+  .que-hacemos .guion { font-size: 1.4rem; margin-bottom: 20px; }
+
+  /* Servicios y alianzas */
+  .tres { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; }
+  .tres .foto { aspect-ratio: 4/4.6; margin-bottom: 14px; }
+  .tres p { font-size: 1rem; }
+
+  /* Cómo implementamos */
+  .pasos { display: grid; gap: 26px; }
+  .paso { border-left: 4px solid var(--terracota); padding-left: 20px; }
+  .paso p { font-size: 1rem; }
+
+  /* Programas */
+  .programas { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 26px; }
+  .programa { background: #fff; border: 2px solid var(--arena); border-radius: 14px; padding: 30px; display: flex; flex-direction: column; }
+  .programa p { flex: 1; margin-bottom: 20px; font-size: 1.02rem; }
+  .etiqueta { display: inline-block; align-self: flex-start; background: var(--arena); color: var(--chocolate); font-weight: 600; font-size: .85rem; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; }
+  .precio { font-weight: 700; color: var(--chocolate); font-size: 1.2rem; margin-bottom: 14px; }
+
+  /* Números */
+  .numeros { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 26px; text-align: center; }
+  .numero strong { display: block; font-size: 2.8rem; font-weight: 700; color: #fff; line-height: 1.1; }
+  .numero span { font-size: 1rem; }
+
+  /* Testimonios (capturas de mensajes reales) */
+  .testimonios { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; align-items: start; }
+  .testimonios img { width: 100%; height: auto; border-radius: 12px; box-shadow: 0 2px 14px rgba(0,0,0,.15); }
+  .testimonio { background: #fff; border-radius: 14px; padding: 28px; border-top: 5px solid var(--terracota); }
+  .testimonio p { font-style: italic; margin-bottom: 14px; font-size: 1.02rem; }
+  .testimonio .quien { font-style: normal; font-weight: 600; color: var(--chocolate); font-size: .98rem; }
+
+  /* Alianzas */
+  .logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-around; gap: 20px 34px; margin-top: 36px; }
+  .logos img { height: 64px; width: auto; max-width: 220px; object-fit: contain; }
+
+  /* Fundadora */
+  .fundadora p { margin-bottom: 14px; font-size: 1.02rem; }
+  .fundadora .foto { aspect-ratio: 1/1.15; border-radius: 4px; }
+  .fundadora .saludo { font-size: 1.4rem; margin-bottom: 16px; }
+
+  /* Contacto */
+  .contacto-links { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 24px; }
+
+  footer { background: var(--chocolate); color: var(--crema); text-align: center; padding: 30px 24px; font-size: .95rem; }
+  footer .logo-pie { height: 70px; width: auto; margin: 0 auto 10px; }
+
+  @media (max-width: 760px) {
+    section { padding: 52px 0; }
+    .oscuro:not(#numeros)::before, .claro::before, .crema::before { width: 110px; height: 30px; top: 14px; }
+    .brand img { height: 38px; }
+    .dos-col { grid-template-columns: 1fr; gap: 28px; }
+    .hero h1 { font-size: 2.3rem; }
+    .hero-caja { padding: 26px; }
+    .que-hacemos h2 { font-size: 2.2rem; }
+    h2 { font-size: 1.8rem; }
+    .btn { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a class="brand" href="#inicio" aria-label="Potencia tu Comunicación">
+      <img src="images/logo-claro.png" alt="Potencia tu Comunicación">
+    </a>
+    <ul>
+      <li><a class="link" href="#que-hacemos">Qué hacemos</a></li>
+      <li><a class="link" href="#servicios">Servicios</a></li>
+      <li><a class="link" href="#programas">Programas</a></li>
+      <li><a class="link" href="#alianzas">Alianzas</a></li>
+      <li><a class="link" href="#fundadora">Mara</a></li>
+      <li><a class="link" href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+  <!-- INICIO -->
+  <section class="hero" id="inicio">
+    <div class="wrap">
+      <div class="hero-caja">
+        <h1>Potencia tus Equipos</h1>
+        <p>Mejoramos la comunicación interna</p>
+        <a class="btn" href="https://wa.me/598095592301?text=Hola%20Mara%2C%20quiero%20solicitar%20una%20reuni%C3%B3n" target="_blank" rel="noopener">Solicitá una reunión</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ HACEMOS -->
+  <section class="oscuro que-hacemos" id="que-hacemos">
+    <div class="wrap dos-col">
+      <div class="foto"><img src="images/que-hacemos.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div>
+        <h2>Qué hacemos</h2>
+        <p class="guion">— Mejoramos equipos</p>
+        <p>Bajamos la rotación, mejoramos la productividad y disminuimos el índice de estrés. Por medio de nuestra metodología Géminis, implementamos técnicas de comunicación e Inteligencia Emocional Corporativa. Como resultado integramos equipos distanciados y potenciamos a líderes con herramientas concretas.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="claro" id="servicios">
+    <div class="wrap">
+      <h2>Servicios</h2>
+      <p class="sub">que puedes llevar a tu espacio laboral</p>
+      <div class="tres">
+        <div>
+          <div class="foto"><img src="images/servicio-capacitaciones.jpg" alt="" onerror="this.style.display='none'"></div>
+          <h3>Capacitaciones</h3>
+          <p>A medida de la necesidad de las empresas y equipos</p>
+        </div>
+        <div>
+          <div class="foto"><img src="images/servicio-charlas.jpg" alt="" style="object-position: 20% center;" onerror="this.style.display='none'"></div>
+          <h3>Charlas y Talleres</h3>
+          <p>Abordando problemáticas que impactan y espacios para dar herramientas que refuercen</p>
+        </div>
+        <div>
+          <div class="foto"><img src="images/servicio-mentorias.jpg" alt="" onerror="this.style.display='none'"></div>
+          <h3>Mentorías</h3>
+          <p>Te dieron un ascenso pero no sabes cómo llevar un equipo, esto es para vos</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CÓMO IMPLEMENTAMOS -->
+  <section class="oscuro" id="como-implementamos">
+    <div class="wrap dos-col">
+      <div class="foto"><img src="images/implementamos.jpg" alt="" onerror="this.style.display='none'"></div>
+      <div>
+        <h2 style="margin-bottom:28px;">Cómo implementamos</h2>
+        <div class="pasos">
+          <div class="paso">
+            <h3>Analizamos la actualidad</h3>
+            <p>Antes de comenzar realizamos un diagnóstico, para evaluar la realidad</p>
+          </div>
+          <div class="paso">
+            <h3>Método Géminis</h3>
+            <p>Selección de las herramientas más relevantes y que se adapten al contexto.</p>
+          </div>
+          <div class="paso">
+            <h3>Entrenamiento Continuo</h3>
+            <p>Una vez aplicadas las herramientas comenzamos con el entrenamiento constante para aplicar el método en el día a día</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMAS (NUEVO) -->
+  <section class="crema" id="programas">
+    <div class="wrap">
+      <h2>Programas</h2>
+      <p class="sub">para que empieces hoy, a tu ritmo</p>
+      <div class="programas">
+
+        <article class="programa">
+          <span class="etiqueta">Líderes</span>
+          <h3>Pack Liderazgo</h3>
+          <p>Desarrollo de habilidades de comunicación en cuatro módulos: autodiagnóstico de estilo de comunicación, feedback sin fricción, conversaciones difíciles y comunicación bajo presión.</p>
+          <div class="precio">USD 89 – 97</div>
+          <a class="btn lleno" href="https://wa.me/598095592301?text=Hola%20Mara%2C%20quiero%20info%20del%20Pack%20Liderazgo" target="_blank" rel="noopener">Agendá una llamada de 15 min</a>
+        </article>
+
+        <article class="programa">
+          <span class="etiqueta">Ebook</span>
+          <h3>Plan 41 Días</h3>
+          <p>Basado en el Método Géminis, en tres bloques: diagnóstico, romper patrones y construir nuevos patrones.</p>
+          <!-- TODO: poner el precio y cambiar href="#" por el link de pago -->
+          <a class="btn lleno" href="#" target="_blank" rel="noopener">Comprar online</a>
+        </article>
+
+        <article class="programa">
+          <span class="etiqueta">7 días</span>
+          <h3>Entrená tu mente, eliminá excusas</h3>
+          <p>Mini programa de 7 días.</p>
+          <!-- TODO: poner el precio y cambiar href="#" por el link de pago -->
+          <a class="btn lleno" href="#" target="_blank" rel="noopener">Comprar online</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS (NUEVO) -->
+  <section class="oscuro" id="numeros">
+    <div class="wrap">
+      <div class="numeros">
+        <div class="numero"><strong>5</strong><span>países: Uruguay, España, Chile, México y Argentina</span></div>
+        <div class="numero"><strong>+200</strong><span>personas acompañadas y potenciadas</span></div>
+        <div class="numero"><strong>+3.200</strong><span>colaboradores en la empresa donde fui Gerenta del Área Corporativa</span></div>
+        <div class="numero"><strong>+13.600</strong><span>personas siguen @potenciatucomunicacio</span></div>
+      </div>
+      <!-- TODO: sumar tus propios números (empresas, personas capacitadas, talleres dictados) -->
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS (NUEVO) -->
+  <section class="crema" id="testimonios">
+    <div class="wrap">
+      <h2>Lo que dicen quienes trabajaron conmigo</h2>
+      <p class="sub">&nbsp;</p>
+      <div class="testimonios">
+        <img src="images/testimonio-1.jpg" alt="Publicación de LinkedIn de Jose Fornett, ingeniero industrial, recomendando las mentorías de Mara y el Método Géminis">
+        <img src="images/testimonio-2.jpg" alt="Mensaje de WhatsApp de Lucas agradeciendo las mentorías y el cambio en su liderazgo">
+        <img src="images/testimonio-3.jpg" alt="Recomendación en LinkedIn de Fidel Zambrano De armas, consultor empresarial, cliente de Mara">
+      </div>
+    </div>
+  </section>
+
+  <!-- ALIANZAS -->
+  <section class="claro" id="alianzas">
+    <div class="wrap">
+      <h2>Alianzas estratégicas</h2>
+      <p class="sub">Y empresas que nos reconocen</p>
+      <div class="tres">
+        <div>
+          <div class="foto"><img src="images/alianza-humand.jpg" alt="Somos parte del Humand Partner Program" onerror="this.style.display='none'"></div>
+          <h3>Humand</h3>
+          <p>Ayudamos a las empresas a conectar</p>
+        </div>
+        <div>
+          <div class="foto"><img src="images/alianza-doppler.jpg" alt="Somos parte del Doppler" onerror="this.style.display='none'"></div>
+          <h3>Marketing Digital</h3>
+          <p>Beneficios para nuestra comunidad</p>
+        </div>
+        <div>
+          <div class="foto"><img src="images/alianza-cem.jpg" alt="Somos socios de la Cámara Empresarial de Maldonado" onerror="this.style.display='none'"></div>
+          <h3>Somos socios de CEM</h3>
+          <p>Beneficios para los socios de la CEM</p>
+        </div>
+      </div>
+      <!-- Logos de empresas: guardá cada uno en images/logos/ y agregá una línea <img> por logo -->
+      <div class="logos">
+        <img src="images/logos/viasona.png" alt="Viasona" onerror="this.style.display='none'">
+        <img src="images/logos/san-fernando.png" alt="San Fernando" onerror="this.style.display='none'">
+        <img src="images/logos/el-dorado.png" alt="El Dorado" onerror="this.style.display='none'">
+        <img src="images/logos/el-cruce.png" alt="Saucony El Cruce" onerror="this.style.display='none'">
+        <img src="images/logos/patagonia-run.png" alt="Patagonia Run" onerror="this.style.display='none'">
+      </div>
+    </div>
+  </section>
+
+  <!-- FUNDADORA -->
+  <section class="oscuro fundadora" id="fundadora">
+    <div class="wrap dos-col">
+      <div>
+        <h2>Fundadora</h2>
+        <p class="saludo">— Hola soy Mara —</p>
+        <p>Creo firmemente que la forma en que nos comunicamos transforma no solo los entornos de trabajo, sino también la vida cotidiana de las personas. Durante años he acompañado a líderes, equipos y profesionales a tender puentes, resolver conflictos con empatía y construir culturas donde el trabajo en equipo sea sinónimo de bienestar y claridad.</p>
+        <p>Desde Potencia tu Comunicación, combino mi experiencia en comunicación corporativa, liderazgo y desarrollo personal para ayudar a que la gestión de personas sea más humana, estratégica y efectiva.</p>
+        <p>Además, soy redactora del diario español Diario Business News.</p>
+        <a class="btn" href="https://www.linkedin.com/in/mara-benitez" target="_blank" rel="noopener">Conóceme más</a>
+      </div>
+      <div class="foto"><img src="images/mara.jpg" alt="Mara Benítez" onerror="this.style.display='none'"></div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="crema" id="contacto">
+    <div class="wrap">
+      <h2>Contacto</h2>
+      <p class="sub">¿Querés conversar? Escribime y charlamos.</p>
+      <div class="contacto-links">
+        <a class="btn lleno" href="https://wa.me/598095592301" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn borde" href="mailto:marissbez@gmail.com">Email</a>
+        <a class="btn borde" href="https://www.instagram.com/potenciatucomunicacio" target="_blank" rel="noopener">Instagram</a>
+        <a class="btn borde" href="https://www.linkedin.com/in/mara-benitez" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <img class="logo-pie" src="images/logo-claro.png" alt="Potencia tu Comunicación">
+  Recordá que todo comunica
+</footer>
+
+</body>
+</html>
